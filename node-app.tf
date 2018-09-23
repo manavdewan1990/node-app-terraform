@@ -7,6 +7,14 @@ provider "aws" {
   region     = "ap-south-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket="datanextapps"
+    key="terraform/dev/terraform_dev.tfstate"
+    region="ap-south-1"
+  }
+}
+
 data "aws_ami" "node_app_ami" {
   most_recent = true
 
