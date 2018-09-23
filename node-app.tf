@@ -23,6 +23,15 @@ data "aws_ami" "node_app_ami" {
   owners = ["947810919529"]
 }
 
+module "common_label" {
+  source     = "git::https://github.com/cloudposse/terraform-terraform-label.git?ref=master"
+  namespace  = "nodejsapp"
+  stage      = "test"
+  name       = "nodejsapp"
+  delimiter  = "-"
+
+}
+
 resource "aws_launch_configuration" "node_app_lc" {
   image_id      = "${data.aws_ami.node_app_ami.id}"
   instance_type = "t2.micro"
