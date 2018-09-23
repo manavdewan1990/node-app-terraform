@@ -8,6 +8,14 @@ provider "aws" {
   profile =    "default"
 }
 
+terraform {
+backend "s3" {
+bucket="manavd-apps"
+key="terraform/dev/terraform_dev.tfstate"
+region="us-east-1"
+}
+}
+
 
 data "aws_ami" "node_app_ami" {
   most_recent = true
