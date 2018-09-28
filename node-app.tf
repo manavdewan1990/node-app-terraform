@@ -11,7 +11,6 @@ terraform {
   backend "s3" {
     bucket="manavd-apps"
     key="terraform/dev/terraform_dev.tfstate"
-    region="ap-south-1"
   }
 }
 
