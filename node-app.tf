@@ -5,14 +5,17 @@ provider "aws" {
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
   region     = "ap-south-1"
+  profile =    "default"
 }
 
 terraform {
   backend "s3" {
     bucket="manavd-apps"
     key="terraform/dev/terraform_dev.tfstate"
+    region="ap-south-1"
   }
 }
+
 
 data "aws_ami" "node_app_ami" {
   most_recent = true
